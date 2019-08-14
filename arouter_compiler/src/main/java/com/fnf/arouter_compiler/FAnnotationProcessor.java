@@ -147,8 +147,8 @@ public class FAnnotationProcessor extends AbstractProcessor {
                         ((TypeElement) element));
             }
         }
-//        String className = Constant.NAME_OF_ROOT + moduleName;
-        TypeSpec typeSpec = TypeSpec.classBuilder("RouteMap").addMethod(initMethodBuilder.build())
+        String className = "ARouter_" + moduleName;
+        TypeSpec typeSpec = TypeSpec.classBuilder(className).addMethod(initMethodBuilder.build())
                 .addModifiers(Modifier.PUBLIC).build();
         return typeSpec;
     }
