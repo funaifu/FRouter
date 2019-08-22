@@ -57,6 +57,9 @@ android路由的实现<br>
 自定义注解如下：
 
  ![baidu](https://github.com/funaifu/FRouter/blob/master/imge/router.jpg)
+ 
+ ![baidu](https://github.com/funaifu/FRouter/blob/master/imge/router_execute.jpg)
+ 
 
 
  
