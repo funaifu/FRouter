@@ -18,4 +18,10 @@ android路由的实现<br>
   * @SuppressWarnings：用于忽略的编译器警告信息
   * Java验证的注解：@NotNull、@Email
   
+ 下面是Override.java的源码：
+  
+  
+  ![baidu](https://github.com/funaifu/FRouter/blob/master/imge/override.jpg)
+ 
+ ###### 自定义注解
   
