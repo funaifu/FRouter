@@ -54,8 +54,9 @@ android路由的实现<br>
 * CLASS：注解在class文件中可用，但会被VM丢弃
 * RUNTIME：VM将在运行期间保留注解，因此可以通过反射机制读取注解的信息
 
+自定义注解如下：
 
- ![baidu](https://github.com/funaifu/FRouter/blob/master/imge/override.jpg)
+ ![baidu](https://github.com/funaifu/FRouter/blob/master/imge/router.jpg)
 
 
  
