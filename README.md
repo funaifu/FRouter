@@ -62,6 +62,10 @@ android路由的实现<br>
  
  ### APT编译时注解
  
+ 要了解APT我们首先得了解Element，element指的是一系列与之相关的接口集合，它们位于javax.lang.model.element包下面<br>
+ 表示一个程序元素，比如包、类或者方法。每个元素都表示一个静态的语言级构造（不表示虚拟机的运行时构造）。<br>
+ 它的子类接口有：ExecutableElement, PackageElement, TypeElement, TypeParameterElement, VariableElement<br>
+ 
  
  
 
