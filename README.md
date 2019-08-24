@@ -66,10 +66,10 @@ android路由的实现<br>
  
  ###### Element
  
- 要了解APT我们首先得了解Element，element指的是一系列与之相关的接口集合，它们位于javax.lang.model.element包下面<br>
- 表示一个程序元素，比如包、类或者方法。每个元素都表示一个静态的语言级构造（不表示虚拟机的运行时构造）。<br>
- 它的子类接口有：ExecutableElement, PackageElement, TypeElement, TypeParameterElement, VariableElement<br>
- Element一些重要的方法：<br>
+    要了解APT我们首先得了解Element，element指的是一系列与之相关的接口集合，它们位于javax.lang.model.element包下面<br>
+    表示一个程序元素，比如包、类或者方法。每个元素都表示一个静态的语言级构造（不表示虚拟机的运行时构造）。<br>
+    它的子类接口有：ExecutableElement, PackageElement, TypeElement, TypeParameterElement, VariableElement<br>
+    Element一些重要的方法：<br>
  1,TypeMirror asType() <br>
   返回此元素定义的类型。通用元素定义了一系列类型，而不仅仅是一个类型。 如果这是一个通用元素，则返回原型类型。 <br>
   这是元素对与其自己的形式类型参数相对应的类型变量的调用。 例如，对于通用类元素C<N extends Number> ，返回参数化类型C<N> 。 <br>
@@ -89,7 +89,7 @@ android路由的实现<br>
 
 ###### AbstractProcessor
 
-一个抽象的注释处理器，被设计为大多数具体注解处理器的一个方便的超类。<br>
+    一个抽象的注释处理器，被设计为大多数具体注解处理器的一个方便的超类。<br>
 1,public Set<String> getSupportedOptions()<br>
   如果处理器类是带有加注解的SupportedOptions ，则返回一个不可修改的组具有相同的一组字符串作为注释的。<br>
 2,public Set<String> getSupportedAnnotationTypes()<br>
@@ -105,8 +105,8 @@ android路由的实现<br>
 
 ###### ProcessingEnvironment
 
-注释处理工具框架将提供一个具有实现此接口的对象的注释 processor，因此 processor <br>
-可以使用该框架提供的设施来编写新文件、报告错误消息并查找其他实用工具。<br>
+    注释处理工具框架将提供一个具有实现此接口的对象的注释 processor，因此 processor <br>
+    可以使用该框架提供的设施来编写新文件、报告错误消息并查找其他实用工具。<br>
 1,Map<String,String> getOptions()<br>
   返回传递给注解处理工具的处理器特定选项。 选项以选项名称的形式返回到选项值。 对于没有值的选项，地图中的相应值为null 。<br>
 2,Messager getMessager()<br>
@@ -122,7 +122,7 @@ android路由的实现<br>
  
 ###### RoundEnvironment
 
-注释处理工具框架将提供一个注释处理器和一个实现此接口的对象，这样处理器可以查询有关注释处理的 round 的信息。<br>
+    注释处理工具框架将提供一个注释处理器和一个实现此接口的对象，这样处理器可以查询有关注释处理的 round 的信息。<br>
 1，Set<? extends Element> getRootElements()<br>
 返回上一轮生成的注释处理的根元素。<br>
 2，Set<? extends Element> getElementsAnnotatedWith(TypeElement a)<br>
@@ -138,9 +138,9 @@ android路由的实现<br>
 
 ### javapoet
 
-JavaPoet是square推出的开源java代码生成框架，提供Java Api生成.java源文件。这个框架功能非常有用，<br>
-我们可以很方便的使用它根据注解、数据库模式、协议格式等来对应生成代码。通过这种自动化生成代码的方式，<br>
-可以让我们用更加简洁优雅的方式要替代繁琐冗杂的重复工作。<br>
+    JavaPoet是square推出的开源java代码生成框架，提供Java Api生成.java源文件。这个框架功能非常有用，<br>
+    我们可以很方便的使用它根据注解、数据库模式、协议格式等来对应生成代码。通过这种自动化生成代码的方式，<br>
+    可以让我们用更加简洁优雅的方式要替代繁琐冗杂的重复工作。<br>
 
   
   
