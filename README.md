@@ -65,7 +65,38 @@ android路由的实现<br>
  要了解APT我们首先得了解Element，element指的是一系列与之相关的接口集合，它们位于javax.lang.model.element包下面<br>
  表示一个程序元素，比如包、类或者方法。每个元素都表示一个静态的语言级构造（不表示虚拟机的运行时构造）。<br>
  它的子类接口有：ExecutableElement, PackageElement, TypeElement, TypeParameterElement, VariableElement<br>
- 
+ Element一些重要的方法：<br>
+ 1,TypeMirror asType() <br>
+ 返回此元素定义的类型。通用元素定义了一系列类型，而不仅仅是一个类型。 如果这是一个通用元素，则返回原型类型。 <br>
+ 这是元素对与其自己的形式类型参数相对应的类型变量的调用。 例如，对于通用类元素C<N extends Number> ，返回参数化类型C<N> 。 <br>
+ Types实用程序界面具有更多的一般方法来获取由元素定义的全部类型。<br>
+ 2,ElementKind getKind() <br>
+ 返回此元素的 kind 。这种元素的种类<br>
+ 3,Set<Modifier> getModifiers()<br>
+ 返回此元素的修饰符，不包括注释。 包含隐式修饰符，如接口成员的public和static修饰符。该元素的修饰符，如果没有，则为空集<br>
+ 4,Name getSimpleName()<br>
+ 返回此元素的简单（不合格）名称。 通用类型的名称不包括对其正式类型参数的任何引用。 例如，类型元素java.util.Set<E>的简单名称是"Set" 。<br>
+ 如果此元素表示未命名的package ，则返回空名称。 如果代表constructor ，则返回名称“ <init> ”。<br>
+ 如果代表static initializer ，则返回名称“ <clinit> ”。 如果它代表一个anonymous class或instance initializer ，则返回一个空的名称。<br>
+ 5,List<? extends AnnotationMirror> getAnnotationMirrors()<br>
+ 返回直接存在于此构造上的注释。<br>
+ 6,<A extends Annotation> A getAnnotation(类<A> annotationType)<br>
+ 返回指定类型的这种构造的注解，如果这样的注释存在 ，否则null 。<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
  
 
