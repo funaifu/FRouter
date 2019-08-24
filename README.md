@@ -62,6 +62,8 @@ android路由的实现<br>
  
  ### APT编译时注解
  
+ ###### Element
+ 
  要了解APT我们首先得了解Element，element指的是一系列与之相关的接口集合，它们位于javax.lang.model.element包下面<br>
  表示一个程序元素，比如包、类或者方法。每个元素都表示一个静态的语言级构造（不表示虚拟机的运行时构造）。<br>
  它的子类接口有：ExecutableElement, PackageElement, TypeElement, TypeParameterElement, VariableElement<br>
@@ -83,9 +85,25 @@ android路由的实现<br>
  6,<A extends Annotation> A getAnnotation(类<A> annotationType)<br>
  返回指定类型的这种构造的注解，如果这样的注释存在 ，否则null 。<br>
 
-###### AbstractProcessor类
+###### AbstractProcessor
 
-一个抽象的注释处理器，被设计为大多数具体注解处理器的一个方便的超类。
+一个抽象的注释处理器，被设计为大多数具体注解处理器的一个方便的超类。<br>
+1,public Set<String> getSupportedOptions()<br>
+  如果处理器类是带有加注解的SupportedOptions ，则返回一个不可修改的组具有相同的一组字符串作为注释的。<br>
+2,public Set<String> getSupportedAnnotationTypes()<br>
+  如果处理器类是带有加注解的SupportedAnnotationTypes ，则返回一个不可修改的组具有相同的一组字符串作为注释的。<br>
+3,public SourceVersion getSupportedSourceVersion()<br>
+  如果处理器类注释为SupportedSourceVersion ，则返回注释中的源版本。 如果类没有这样注释， 那么返回SourceVersion.RELEASE_6 。<br>
+4,public void init(ProcessingEnvironment processingEnv)<br>
+  通过将processingEnv字段设置为processingEnv参数的值，如果在同一对象上多次调用此方法，则将抛出IllegalStateException 。<br>
+  processingEnv - 工具框架向处理器提供访问环境的环境<br>
+5,public abstract boolean process(Set<? extends TypeElement> annotations,RoundEnvironment roundEnv)<br>
+  对来自前一轮的类型元素处理一组注释类型，并返回此处理器是否声明这些注释类型。 如果返回true ，则会声明注释类型，不会要求后续处理器进行处理; <br>
+  如果返回false ，则注释类型是无人认领的，并且后处理器可能被要求处理它们。 处理器可以总是返回相同的布尔值，或者可以根据所选择的标准来改变结果。<br>
+
+###### ProcessingEnvironment
+
+  
 
 
 
