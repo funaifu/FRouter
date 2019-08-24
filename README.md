@@ -60,6 +60,8 @@ android路由的实现<br>
  
  ![baidu](https://github.com/funaifu/FRouter/blob/master/imge/router_execute.jpg)
  
+ *******************************************
+ 
  ### APT编译时注解
  
  ###### Element
@@ -69,21 +71,21 @@ android路由的实现<br>
  它的子类接口有：ExecutableElement, PackageElement, TypeElement, TypeParameterElement, VariableElement<br>
  Element一些重要的方法：<br>
  1,TypeMirror asType() <br>
- 返回此元素定义的类型。通用元素定义了一系列类型，而不仅仅是一个类型。 如果这是一个通用元素，则返回原型类型。 <br>
- 这是元素对与其自己的形式类型参数相对应的类型变量的调用。 例如，对于通用类元素C<N extends Number> ，返回参数化类型C<N> 。 <br>
- Types实用程序界面具有更多的一般方法来获取由元素定义的全部类型。<br>
+  返回此元素定义的类型。通用元素定义了一系列类型，而不仅仅是一个类型。 如果这是一个通用元素，则返回原型类型。 <br>
+  这是元素对与其自己的形式类型参数相对应的类型变量的调用。 例如，对于通用类元素C<N extends Number> ，返回参数化类型C<N> 。 <br>
+  Types实用程序界面具有更多的一般方法来获取由元素定义的全部类型。<br>
  2,ElementKind getKind() <br>
- 返回此元素的 kind 。这种元素的种类<br>
+  返回此元素的 kind 。这种元素的种类<br>
  3,Set<Modifier> getModifiers()<br>
- 返回此元素的修饰符，不包括注释。 包含隐式修饰符，如接口成员的public和static修饰符。该元素的修饰符，如果没有，则为空集<br>
+  返回此元素的修饰符，不包括注释。 包含隐式修饰符，如接口成员的public和static修饰符。该元素的修饰符，如果没有，则为空集<br>
  4,Name getSimpleName()<br>
- 返回此元素的简单（不合格）名称。 通用类型的名称不包括对其正式类型参数的任何引用。 例如，类型元素java.util.Set<E>的简单名称是"Set" 。<br>
- 如果此元素表示未命名的package ，则返回空名称。 如果代表constructor ，则返回名称“ <init> ”。<br>
- 如果代表static initializer ，则返回名称“ <clinit> ”。 如果它代表一个anonymous class或instance initializer ，则返回一个空的名称。<br>
+  返回此元素的简单（不合格）名称。 通用类型的名称不包括对其正式类型参数的任何引用。 例如，类型元素java.util.Set<E>的简单名称是"Set" 。<br>
+  如果此元素表示未命名的package ，则返回空名称。 如果代表constructor ，则返回名称“ <init> ”。<br>
+  如果代表static initializer ，则返回名称“ <clinit> ”。 如果它代表一个anonymous class或instance initializer ，则返回一个空的名称。<br>
  5,List<? extends AnnotationMirror> getAnnotationMirrors()<br>
- 返回直接存在于此构造上的注释。<br>
+  返回直接存在于此构造上的注释。<br>
  6,<A extends Annotation> A getAnnotation(类<A> annotationType)<br>
- 返回指定类型的这种构造的注解，如果这样的注释存在 ，否则null 。<br>
+  返回指定类型的这种构造的注解，如果这样的注释存在 ，否则null 。<br>
 
 ###### AbstractProcessor
 
@@ -102,6 +104,42 @@ android路由的实现<br>
   如果返回false ，则注释类型是无人认领的，并且后处理器可能被要求处理它们。 处理器可以总是返回相同的布尔值，或者可以根据所选择的标准来改变结果。<br>
 
 ###### ProcessingEnvironment
+
+注释处理工具框架将提供一个具有实现此接口的对象的注释 processor，因此 processor <br>
+可以使用该框架提供的设施来编写新文件、报告错误消息并查找其他实用工具。<br>
+1,Map<String,String> getOptions()<br>
+  返回传递给注解处理工具的处理器特定选项。 选项以选项名称的形式返回到选项值。 对于没有值的选项，地图中的相应值为null 。<br>
+2,Messager getMessager()<br>
+  返回用于报告错误，警告和其他通知的信息。<br>
+3，Filer getFiler()<br>
+  返回用于创建新的源，类或辅助文件的文件管理器。<br>
+4，Elements getElementUtils()<br>
+  返回一些用于操作元素的实用方法的实现<br>
+5，Types getTypeUtils()<br>
+  返回一些用于对类型进行操作的实用方法的实现。<br>
+6，SourceVersion getSourceVersion()<br>
+  返回任何生成的 source和 class文件应符合的源版本。<br>
+ 
+###### RoundEnvironment
+
+注释处理工具框架将提供一个注释处理器和一个实现此接口的对象，这样处理器可以查询有关注释处理的 round 的信息。<br>
+1，Set<? extends Element> getRootElements()<br>
+返回上一轮生成的注释处理的根元素。<br>
+2，Set<? extends Element> getElementsAnnotatedWith(TypeElement a)<br>
+返回使用给定注释类型注释的元素。 注释可以直接显示或继承。 仅返回本轮注释处理中包含的包元素和类型元素，或返回在其中声明的成员，<br>
+构造函数，参数或类型参数的声明。 包含的类型元素是root types和嵌套在其中的任何成员类型。 包中的元素不被认为包含在内，<br>
+只因为该包的一个package-info文件被创建。<br>
+3，Set<? extends Element> getElementsAnnotatedWith(类<? extends Annotation> a)<br>
+返回使用给定注释类型注释的元素。 注释可以直接显示或继承。 仅返回本轮注释处理中包含的包元素和类型元素，或返回在其中声明的成员，<br>
+构造函数，参数或类型参数的声明。 包含的类型元素是root types ，嵌套在其中的任何成员类型。 包中的元素不被认为包含在内，<br>
+因为该包的package-info文件已创建。<br>
+
+************************************************************************************
+
+
+  
+  
+
 
   
 
