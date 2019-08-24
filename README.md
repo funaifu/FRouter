@@ -141,6 +141,8 @@ android路由的实现<br>
     JavaPoet是square推出的开源java代码生成框架，提供Java Api生成.java源文件。这个框架功能非常有用，
     我们可以很方便的使用它根据注解、数据库模式、协议格式等来对应生成代码。通过这种自动化生成代码的方式，
     可以让我们用更加简洁优雅的方式要替代繁琐冗杂的重复工作。
+    
+可以参考：https://blog.csdn.net/IO_Field/article/details/89355941    
    
    
 
