@@ -83,6 +83,10 @@ android路由的实现<br>
  6,<A extends Annotation> A getAnnotation(类<A> annotationType)<br>
  返回指定类型的这种构造的注解，如果这样的注释存在 ，否则null 。<br>
 
+###### AbstractProcessor类
+
+一个抽象的注释处理器，被设计为大多数具体注解处理器的一个方便的超类。
+
 
 
 
